@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.k15t</groupId>
+    <artifactId>java-syntax-highlighter</artifactId>
+    <version>1.2.1-SNAPSHOT</version>
+
+    <packaging>jar</packaging>
+
+    <name>Java Syntax Highlighter</name>
+    <description>Fork of https://github.com/cws1989/java-syntax-highlighter</description>
+
+    <organization>
+        <name>K15t GmbH</name>
+        <url>https://www.k15t.com/</url>
+    </organization>
+
+    <scm>
+        <connection>scm:git:ssh://git@github.com:K15t/java-syntax-highlighter.git</connection>
+        <url>https://github.com/K15t/java-syntax-highlighter</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <name>K15t Software Release</name>
+            <url>
+                https://nexus.k15t.com/content/repositories/releases/
+            </url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus</id>
+            <name>K15t Software Snapshot</name>
+            <url>
+                https://nexus.k15t.com/content/repositories/snapshots/
+            </url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <doclint>none</doclint>
+    </properties>
+
+</project>

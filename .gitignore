@@ -1,0 +1,17 @@
+target/
+.settings
+.project
+.classpath
+.idea
+*.iml
+
+# OS generated files #
+.DS_Store
+ehthumbs.db
+Thumbs.db
+.Directory
+
+
+# macOS folder icon (actually "Icon\r\r", but that's too hard to match, so we simply re-include what we need)
+Icon?
+!icons
