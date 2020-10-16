@@ -341,7 +341,7 @@ public class SyntaxHighlighterPane extends JTextPane {
 
   /**
    * Apply the list of style to the script text pane. See 
-   * {@link syntaxhighlighter.parser.Parser#parse(syntaxhighlighter.brush.Brush, boolean, char[], int, int)}.
+   * {@link syntaxhighlighter.parser.Parser#parse(syntaxhighlighter.brush.Brush, boolean, CharSequence, int, int)}.
    */
   protected void applyStyle() {
     if (theme == null || styleList == null) {
