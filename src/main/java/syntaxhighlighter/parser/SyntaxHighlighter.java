@@ -27,7 +27,6 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.text.Segment;
 import syntaxhighlighter.brush.Brush;
 import syntaxhighlighter.brush.RegExpRule;
 
@@ -116,7 +115,7 @@ public class SyntaxHighlighter {
    * 
    * @return the parsed result, the key of the map is style key
    */
-  public Map<Integer, List<MatchResult>> parse(Brush brush, boolean htmlScript, char[] content, int offset, int length) {
+  public Map<Integer, List<MatchResult>> parse(Brush brush, boolean htmlScript, CharSequence content, int offset, int length) {
     if (brush == null || content == null) {
       return null;
     }
@@ -138,7 +137,7 @@ public class SyntaxHighlighter {
    * 
    * @return the parsed result, the key of the map is style key
    */
-  protected Map<Integer, List<MatchResult>> parse(Map<Integer, List<MatchResult>> matches, Brush brush, boolean htmlScript, char[] content, int offset, int length) {
+  protected Map<Integer, List<MatchResult>> parse(Map<Integer, List<MatchResult>> matches, Brush brush, boolean htmlScript, CharSequence content, int offset, int length) {
     if (matches == null || brush == null || content == null) {
       return null;
     }
@@ -154,7 +153,7 @@ public class SyntaxHighlighter {
         for (Brush htmlScriptBrush : htmlScriptBrushList) {
           Pattern _pattern = htmlScriptBrush.getHTMLScriptRegExp().getpattern();
 
-          Matcher matcher = _pattern.matcher(new Segment(content, offset, length));
+          Matcher matcher = _pattern.matcher(content.subSequence(offset, offset + length));
           while (matcher.find()) {
             // HTML-Script brush has superior priority, so remove all previous matches within the matched range
             removeMatches(matches, matcher.start() + offset, matcher.end() + offset);
@@ -190,14 +189,14 @@ public class SyntaxHighlighter {
    * @param offset the offset
    * @param length the length
    */
-  protected void parse(Map<Integer, List<MatchResult>> matches, RegExpRule regExpRule, char[] content, int offset, int length) {
+  protected void parse(Map<Integer, List<MatchResult>> matches, RegExpRule regExpRule, CharSequence content, int offset, int length) {
     if (matches == null || regExpRule == null || content == null) {
       return;
     }
     Map<Integer, Object> groupOperations = regExpRule.getGroupOperations();
 
     Pattern regExpPattern = regExpRule.getPattern();
-    Matcher matcher = regExpPattern.matcher(new Segment(content, offset, length));
+    Matcher matcher = regExpPattern.matcher(content.subSequence(offset, offset + length));
     while (matcher.find()) {
       // deal with the matched result
       for (int groupId : groupOperations.keySet()) {

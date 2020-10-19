@@ -38,7 +38,7 @@ public class BrushXml extends Brush {
 
     List<RegExpRule> _regExpRuleList = new ArrayList<RegExpRule>();
 
-    _regExpRuleList.add(new RegExpRule("(\\&lt;|<)\\!\\[[\\w\\s]*?\\[(.|\\s)*?\\]\\](\\&gt;|>)", Pattern.MULTILINE, "color2")); // <![ ... [ ... ]]>
+    _regExpRuleList.add(new RegExpRule("(\\&lt;|<)\\!\\[[\\w\\s]*?\\[([\\S\\s])*?\\]\\](\\&gt;|>)", Pattern.MULTILINE, "color2")); // <![ ... [ ... ]]>
     _regExpRuleList.add(new RegExpRule(RegExpRule.xmlComments, "comments")); // <!-- ... -->
 
     // regular expression for highlighting the tag

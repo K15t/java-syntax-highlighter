@@ -137,11 +137,11 @@ public class SyntaxHighlighterParser implements Parser {
   }
 
   @Override
-  public List<ParseResult> parse(String fileExtension, String content) {
+  public List<ParseResult> parse(String fileExtension, CharSequence content) {
     List<ParseResult> returnList = new ArrayList<ParseResult>();
 
     syntaxHighlighter.setHTMLScriptBrushList(htmlScriptBrushesList);
-    Map<Integer, List<MatchResult>> parsedResult = syntaxHighlighter.parse(brush, htmlScript, content.toCharArray(), 0, content.length());
+    Map<Integer, List<MatchResult>> parsedResult = syntaxHighlighter.parse(brush, htmlScript, content, 0, content.length());
     for (List<MatchResult> resultList : parsedResult.values()) {
       for (MatchResult result : resultList) {
         List<String> styleKeyList = null;
